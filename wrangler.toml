@@ -1,0 +1,11 @@
+name = "cibl-settler"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+[triggers]
+crons = ["* * * * *"] # اجرای خودکار در هر دقیقه
+
+[vars]
+SOLANA_RPC_URL = "https://api.mainnet-beta.solana.com"
+SUPABASE_URL = "https://your-id.supabase.co"
+# کلیدهای حساس را با دستور wrangler secret put ست کنید
