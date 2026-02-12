@@ -39,3 +39,26 @@ anchor keys list
 ​پس از پایان موفقیت‌آمیز دستور بالا، به مسیر زیر بروید:
 cibl-core/anchor/target/idl/cibl_gamble.json
 ​این همان فایلی است که باید به ریپازیتوری موبایل (Cibl) منتقل کنید
+
+
+
+
+
+
+
+anchor/
+├── .anchor/            # (خودکار ساخته می‌شود)
+├── apps/               # (اختیاری برای پروژه‌های چندگانه)
+├── migrations/         # اسکریپت‌های مربوط به استقرار کانتراکت
+│   └── deploy.js
+├── node_modules/       # پکیج‌های جاوااسکریپتی برای تست
+├── programs/           # کدهای اصلی Rust (بسیار مهم)
+│   └── cibl_gamble/    # نام متناسب با پروژه شما
+│       ├── src/
+│       │   └── lib.rs  # همان کدی که با هم نوشتیم
+│       └── Cargo.toml  # تنظیمات Rust برای این برنامه خاص
+├── tests/              # کدهای تست با Mocha/TypeScript
+│   └── cibl_gamble.ts
+├── Anchor.toml         # فایل پیکربندی اصلی (حیاتی)
+├── Cargo.toml          # تنظیمات کلی فضای کاری (Workspace)
+└── package.json        # برای مدیریت ابزارهای تست
