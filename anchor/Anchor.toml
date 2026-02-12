@@ -1,0 +1,9 @@
+[programs.localnet]
+cibl_gamble = "آدرس_کانتراکت_شما"
+
+[registry]
+url = "https://anchor.projectserum.com"
+
+[provider]
+cluster = "localnet" # یا devnet برای تست آنلاین
+wallet = "~/.config/solana/id.json"
