@@ -7,3 +7,17 @@ url = "https://anchor.projectserum.com"
 [provider]
 cluster = "localnet" # یا devnet برای تست آنلاین
 wallet = "~/.config/solana/id.json"
+[toolchain]
+
+[programs.devnet]
+cibl_gamble = "C1BL111111111111111111111111111111111111111"
+
+[registry]
+url = "https://anchor.projectserum.com"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
