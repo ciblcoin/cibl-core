@@ -1,3 +1,43 @@
+// src/index.js - Cloudflare Worker
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    // 1. مسیر دریافت قیمت لحظه‌ای (Price Feed)
+    if (url.pathname === "/get-price") {
+      try {
+        const response = await fetch(
+          "https://api.binance.com/api/v3/ticker/price?symbol=SOLUSDT"
+        );
+        const data = await response.json();
+        
+        // برگرداندن قیمت به صورت امن به موبایل
+        return new Response(JSON.stringify({
+          symbol: "SOL",
+          price: data.price,
+          timestamp: Date.now()
+        }), {
+          headers: { 
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*" // اجازه دسترسی به موبایل
+          },
+        });
+      } catch (error) {
+        return new Response("Error fetching price", { status: 500 });
+      }
+    }
+
+    // 2. مسیر ثبت برنده (فقط با دسترسی خاص)
+    if (url.pathname === "/resolve-winner" && request.method === "POST") {
+      // در اینجا منطق بررسی قیمت شروع و پایان چالش ۱ دقیقه‌ای قرار می‌گیرد
+      // و در نهایت دستور پرداخت به کانتراکت صادر می‌شود.
+      return new Response(JSON.stringify({ status: "Processing Result" }));
+    }
+
+    return new Response("CiBL Oracle Worker is Live!");
+  },
+};
+
 import { createClient } from '@supabase/supabase-js';
 import { Connection, Keypair, PublicKey } from '@solana/web3.js';
 
