@@ -1,0 +1,7 @@
+name = "cibl-oracle"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+ENVIRONMENT = "production"
+# اینجا می‌توانید API Keyهای حساس را بعداً اضافه کنید
